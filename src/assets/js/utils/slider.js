@@ -1,11 +1,6 @@
-/**
- * @author Luuxis
- * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
- */
-
 'use strict';
 
-export default class Slider {
+class Slider {
     constructor(id, minValue, maxValue) {
         this.startX = 0;
         this.x = 0;
@@ -37,10 +32,10 @@ export default class Slider {
         this.setMinValue(this.minValue);
         this.setMaxValue(this.maxValue);
 
-        this.touchLeft.addEventListener('mousedown', (event) => this.onStart(document.querySelector('.slider-touch-left'), event));
-        this.touchRight.addEventListener('mousedown', (event) => this.onStart(document.querySelector('.slider-touch-right'), event));
-        this.touchLeft.addEventListener('touchstart', (event) => this.onStart(document.querySelector('.slider-touch-left'), event));
-        this.touchRight.addEventListener('touchstart', (event) => this.onStart(document.querySelector('.slider-touch-right'), event));
+        this.touchLeft.addEventListener('mousedown', (event) => { this.onStart(event.path[1], event) });
+        this.touchRight.addEventListener('mousedown', (event) => { this.onStart(event.path[1], event) });
+        this.touchLeft.addEventListener('touchstart', (event) => { this.onStart(event.path[1], event) });
+        this.touchRight.addEventListener('touchstart', (event) => { this.onStart(event.path[1], event) });
     }
 
     reset() {
@@ -152,3 +147,5 @@ export default class Slider {
         if (this.func[name]) this.func[name](...args);
     }
 }
+
+export default Slider;
