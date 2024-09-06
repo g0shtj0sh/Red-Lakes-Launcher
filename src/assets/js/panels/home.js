@@ -241,36 +241,70 @@ class Home {
     }
 
     initBtn() {
-
-        document.querySelector('.settings-btn').addEventListener('click', () => {
-            changePanel('settings');
-        });
-
-        document.querySelector('.player-head').addEventListener('click', () => {
-            changePanel('panelSkin');
-        });
-        document.querySelector('.Discord').addEventListener('click', () => {
-            this.openlink('https://discord.com');
-        })
-        document.querySelector('.Twitter').addEventListener('click', () => {
-            this.openlink('https://twitter.com');
-        })
-        document.querySelector('.Github').addEventListener('click', () => {
-            this.openlink('https://github.com');
-        })
-        document.querySelector('.Youtube').addEventListener('click', () => {
-            this.openlink('https://youtube.com');
-        })
-        document.querySelector('.Instagram').addEventListener('click', () => {
-            this.openlink('https://instagram.com');
-        })
-        document.querySelector('.Twitch').addEventListener('click', () => {
-            this.openlink('https://twitch.tv');
-        })
-        document.querySelector('.MyWebsite').addEventListener('click', () => {
-            this.openlink('https://fefe-du-973.fr');
-        })
-    }
+        const settingsBtn = document.querySelector('.settings-btn');
+        const playerHead = document.querySelector('.player-head');
+        const discordBtn = document.querySelector('.Discord');
+        const twitterBtn = document.querySelector('.Twitter');
+        const githubBtn = document.querySelector('.Github');
+        const youtubeBtn = document.querySelector('.Youtube');
+        const instagramBtn = document.querySelector('.Instagram');
+        const twitchBtn = document.querySelector('.Twitch');
+        const myWebsiteBtn = document.querySelector('.MyWebsite');
+    
+        if (settingsBtn) {
+            settingsBtn.addEventListener('click', () => {
+                changePanel('settings');
+            });
+        }
+    
+        if (playerHead) {
+            playerHead.addEventListener('click', () => {
+                changePanel('panelSkin'); 
+            });
+        }
+    
+        if (discordBtn) {
+            discordBtn.addEventListener('click', () => {
+                this.openlink('https://discord.gg/SsPfjT5wcy');
+            });
+        }
+    
+        if (twitterBtn) {
+            twitterBtn.addEventListener('click', () => {
+                this.openlink('https://twitter.com');
+            });
+        }
+    
+        if (githubBtn) {
+            githubBtn.addEventListener('click', () => {
+                this.openlink('https://github.com');
+            });
+        }
+    
+        if (youtubeBtn) {
+            youtubeBtn.addEventListener('click', () => {
+                this.openlink('https://www.youtube.com/channel/UCb9_mEEMDWzh2Xf5Znn_j9Q');
+            });
+        }
+    
+        if (instagramBtn) {
+            instagramBtn.addEventListener('click', () => {
+                this.openlink('https://instagram.com');
+            });
+        }
+    
+        if (twitchBtn) {
+            twitchBtn.addEventListener('click', () => {
+                this.openlink('https://twitch.tv');
+            });
+        }
+    
+        if (myWebsiteBtn) {
+            myWebsiteBtn.addEventListener('click', () => {
+                this.openlink('https://RedLakes.fr');
+            });
+        }
+    }    
 
     openlink(url) {
         shell.openExternal(url);

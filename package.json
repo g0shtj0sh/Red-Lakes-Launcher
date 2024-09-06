@@ -16,7 +16,7 @@
         "build": "node build.js --obf=true --build=platform",
         "icon": "node build.js --icon=https://github.com/g0shtj0sh/Red-Lakes-Launcher/blob/master/src/assets/images/icon.png"
     },
-    "license": "CCANC",
+    "license": "CCANC", 
     "nodemonConfig": {
         "ext": "js,html,css",
         "ignore": "**/test"

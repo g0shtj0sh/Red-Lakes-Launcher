@@ -24,39 +24,44 @@ class Settings {
 
 
     initAccount() {
-        document.querySelector('.accounts').addEventListener('click', async(e) => {
-            let uuid = e.target.id;
-            let selectedaccount = await this.database.get('1234', 'accounts-selected');
-
-            if (e.path[0].classList.contains('account')) {
-                accountSelect(uuid);
-                this.database.update({ uuid: "1234", selected: uuid }, 'accounts-selected');
-            }
-
-            if (e.target.classList.contains("account-delete")) {
-                this.database.delete(e.path[1].id, 'accounts');
-
-                document.querySelector('.accounts').removeChild(e.path[1])
-                if (!document.querySelector('.accounts').children.length) {
-                    changePanel("login");
-                    return
+        const accountsElement = document.querySelector('.accounts');
+    
+        accountsElement.addEventListener('click', async (e) => {
+            const target = e.target;
+    
+            // Vérifie si le clic a eu lieu sur un bouton de suppression
+            if (target.classList.contains("account-delete")) {
+                // Trouver l'élément compte parent
+                const accountElement = target.closest('.account');
+    
+                if (accountElement) {
+                    const accountId = accountElement.id;
+                    const selectedAccount = (await this.database.get('1234', 'accounts-selected')).value.selected;
+    
+                    // Supprimer le compte de la base de données
+                    await this.database.delete(accountId, 'accounts');
+    
+                    // Retirer l'élément du DOM
+                    accountsElement.removeChild(accountElement);
+    
+                    // Si aucun compte n'est présent, passer au panneau de connexion
+                    if (!accountsElement.children.length) {
+                        changePanel("login");
+                        return;
+                    }
+    
+                    // Si le compte supprimé était le compte sélectionné, en sélectionner un autre
+                    if (accountId === selectedAccount) {
+                        const allAccounts = (await this.database.getAll('accounts'));
+                        if (allAccounts.length) {
+                            const newSelectedUuid = allAccounts[0].value.uuid;
+                            await this.database.update({ uuid: "1234", selected: newSelectedUuid }, 'accounts-selected');
+                            accountSelect(newSelectedUuid);
+                        }
+                    }
                 }
-
-                if (e.path[1].id === selectedaccount.value.selected) {
-                    let uuid = (await this.database.getAll('accounts'))[0].value.uuid
-                    this.database.update({
-                        uuid: "1234",
-                        selected: uuid
-                    }, 'accounts-selected')
-                    accountSelect(uuid)
-                }
             }
-        })
-
-        document.querySelector('.add-account').addEventListener('click', () => {
-            document.querySelector(".cancel-login").style.display = "block";
-            changePanel("login");
-        })
+        });
     }
 
     async initRam() {

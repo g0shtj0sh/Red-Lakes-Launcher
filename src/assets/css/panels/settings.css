@@ -116,29 +116,6 @@
  *                                                                             *
  ******************************************************************************/
 
-.add-account {
-    width: 35%;
-    height: 8%;
-    border: none;
-    border-radius: 15px;
-    font: normal normal bold 30px/40px Poppins;
-    color: #000000;
-    background: rgb(81,236,87);
-    background: radial-gradient(circle, rgba(81,236,87,1) 0%, rgba(71,189,90,1) 100%);
-    box-shadow: 0 0 10px #38a14a;
-    margin: 20px 0;
-    margin-bottom: 30px;
-    margin-right: 25%;
-    margin-left: 25%;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-
-}
-
-.add-account:hover {
-    box-shadow: 0 0 20px #38a14a;
-    transform: scale(1.05);
-}
 
 .accounts {
     display: contents;
