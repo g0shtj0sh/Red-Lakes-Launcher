@@ -17,23 +17,22 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-            { "message": "Salut ! 👋", "author": "Fefe_du_973" },
-            { "message": "Salut je suis du code. 👨‍💻", "author": "Fefe_du_973" },
-            { "message": "Visite mon site pour + d'infos 🌐", "author": "Fefe_du_973" }
+            { "message": "Bienvenue sur Red Lakes !" },
+            { "message": "Bienvenue sur Red Lakes !" },
+            { "message": "Visite le Discord pour + d'infos 🌐" }
         ];
-        let splash = splashes[Math.floor(Math.random() * splashes.length)];
+        let splash = splashes[Math.floor(Math.random(0) * splashes.length)];
         this.splashMessage.textContent = splash.message;
-        this.splashAuthor.children[0].textContent = "@" + splash.author;
-        await sleep(100);
+        await sleep(200);
         document.querySelector("#splash").style.display = "block";
-        await sleep(500);
+        await sleep(1000);
         this.splash.classList.add("opacity");
         await sleep(500);
         this.splash.classList.add("translate");
         this.splashMessage.classList.add("opacity");
         this.splashAuthor.classList.add("opacity");
         this.message.classList.add("opacity");
-        await sleep(1000);
+        await sleep(1500);
         this.maintenanceCheck();
     }
 
