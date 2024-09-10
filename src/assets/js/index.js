@@ -2,7 +2,7 @@
 const { ipcRenderer } = require('electron');
 import { config } from './utils.js';
 
-let dev = process.env.NODE_ENV === 'dev';
+let dev = process.env.NODE_ENV === 'dev'; 
 
 
 class Splash {

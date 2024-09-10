@@ -1,6 +1,6 @@
 {
-    "name": "RedLakes-Launcher",
-    "preductname": "RedLakes Launcher",
+    "name": "Red-Lakes-Launcher",
+    "preductname": "Red Lakes Launcher",
     "version": "2.0.8",
     "description": "Launcher Mincraft pour le serveur RedLakes",
     "main": "src/app.js",

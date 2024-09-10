@@ -3,7 +3,7 @@
 // libs 
 const fs = require('fs');
 const { Microsoft, Mojang } = require('minecraft-java-core');
-const { ipcRenderer } = require('electron');
+const { ipcRenderer } = require('electron'); 
 
 import { config, logger, changePanel, database, addAccount, accountSelect } from './utils.js';
 import Login from './panels/login.js';
