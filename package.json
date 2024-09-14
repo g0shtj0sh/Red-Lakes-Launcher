@@ -1,7 +1,7 @@
 {
     "name": "RedLakes_Launcher",
     "preductname": "RedLakes_Launcher",
-    "version": "2.0.8",
+    "version": "2.1.1",
     "description": "Launcher Minecraft pour le serveur RedLakes",
     "main": "src/app.js",
     "author": {
