@@ -13,7 +13,7 @@ jobs:
 
       - name: Get version
         run: echo "version=$(jq -r .version package.json)" >> $GITHUB_ENV
-      
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -23,7 +23,7 @@ jobs:
           tag_name: ${{ env.version }}
           release_name: release ${{ env.version }}
           draft: false
-          prerelease: ${{ contains(env.version, 'beta') || contains(env.version, 'alpha') }}
+          prerelease: ${{ env.version != 'production' }}
 
   build-launcher:
     needs: create-release
@@ -35,7 +35,7 @@ jobs:
 
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Set up Node
         uses: actions/setup-node@v3
@@ -53,6 +53,6 @@ jobs:
 
       - name: Build
         env:
-          GH_TOKEN: ${{ secrets.github_token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run build
         shell: bash
